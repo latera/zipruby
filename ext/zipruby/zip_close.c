@@ -435,7 +435,7 @@ add_data(struct zip *za, struct zip_source *src, struct zip_dirent *de, FILE *ft
 	return -1;
  
     if (is_zip64 != ret) {
-	/* Zip64 mismatch between preliminary file header written before data and final file header written afterwards */
+	/* ZipRuby64 mismatch between preliminary file header written before data and final file header written afterwards */
 	_zip_error_set(&za->error, ZIP_ER_INTERNAL, 0);
 	return -1;
     }

@@ -453,7 +453,7 @@ _zip_dirent_read(struct zip_dirent *zde, FILE *fp,
     zde->filename = _zip_dirent_process_ef_utf_8(zde, ZIP_EF_UTF_8_NAME, zde->filename);
     zde->comment = _zip_dirent_process_ef_utf_8(zde, ZIP_EF_UTF_8_COMMENT, zde->comment);
 
-    /* Zip64 */
+    /* ZipRuby64 */
 
     if (zde->uncomp_size == ZIP_UINT32_MAX || zde->comp_size == ZIP_UINT32_MAX || zde->offset == ZIP_UINT32_MAX) {
 	zip_uint16_t got_len, needed_len;

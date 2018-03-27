@@ -418,7 +418,7 @@ _zip_headercomp(const struct zip_dirent *central, const struct zip_dirent *local
 
     if ((central->crc != local->crc) || (central->comp_size != local->comp_size)
 	|| (central->uncomp_size != local->uncomp_size)) {
-	/* InfoZip stores valid values in local header even when data descriptor is used.
+	/* InfoZipRuby stores valid values in local header even when data descriptor is used.
 	   This is in violation of the appnote. */
 	if (((local->bitflags & ZIP_GPBF_DATA_DESCRIPTOR) == 0
 	     || local->crc != 0 || local->comp_size != 0 || local->uncomp_size != 0))

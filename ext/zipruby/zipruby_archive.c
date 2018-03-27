@@ -57,14 +57,14 @@ static VALUE zipruby_archive_encrypt(VALUE self, VALUE password);
 static VALUE zipruby_archive_read(VALUE self);
 static VALUE zipruby_archive_add_dir(VALUE self, VALUE name);
 
-extern VALUE Zip;
+extern VALUE ZipRuby;
 VALUE Archive;
 extern VALUE File;
 extern VALUE Stat;
 extern VALUE Error;
 
 void Init_zipruby_archive() {
-  Archive = rb_define_class_under(Zip, "Archive", rb_cObject);
+  Archive = rb_define_class_under(ZipRuby, "Archive", rb_cObject);
   rb_define_alloc_func(Archive, zipruby_archive_alloc);
   rb_include_module(Archive, rb_mEnumerable);
   rb_define_singleton_method(Archive, "open", zipruby_archive_s_open, -1);
@@ -973,7 +973,7 @@ static VALUE zipruby_archive_update(int argc, VALUE *argv, VALUE self) {
   rb_scan_args(argc, argv, "11", &srcarchive, &flags);
 
   if (!rb_obj_is_instance_of(srcarchive, Archive)) {
-    rb_raise(rb_eTypeError, "wrong argument type %s (expected Zip::Archive)", rb_class2name(CLASS_OF(srcarchive)));
+    rb_raise(rb_eTypeError, "wrong argument type %s (expected ZipRuby::Archive)", rb_class2name(CLASS_OF(srcarchive)));
   }
 
   if (!NIL_P(flags)) {
@@ -1444,7 +1444,7 @@ static VALUE zipruby_archive_read(VALUE self) {
   Data_Get_Struct(self, struct zipruby_archive, p_archive);
 
   if (NIL_P(p_archive->path)) {
-    rb_raise(rb_eRuntimeError, "invalid Zip::Archive");
+    rb_raise(rb_eRuntimeError, "invalid ZipRuby::Archive");
   }
 
 #ifdef _WIN32

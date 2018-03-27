@@ -29,7 +29,7 @@ const char * const _zip_err_str[] = {
     "Invalid argument",
     "Not a zip archive",
     "Internal error",
-    "Zip archive inconsistent",
+    "ZipRuby archive inconsistent",
     "Can't remove file",
     "Entry has been deleted",
     "Encryption method not supported",

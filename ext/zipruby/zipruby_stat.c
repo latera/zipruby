@@ -10,13 +10,13 @@ static VALUE zipruby_stat_alloc(VALUE klass);
 static void zipruby_stat_free(struct zipruby_stat *p);
 static VALUE zipruby_stat_initialize(int argc, VALUE *argv, VALUE self);
 
-extern VALUE Zip;
+extern VALUE ZipRuby;
 extern VALUE Archive;
 VALUE Stat;
 extern VALUE Error;
 
 void Init_zipruby_stat() {
-  Stat = rb_define_class_under(Zip, "Stat", rb_cObject);
+  Stat = rb_define_class_under(ZipRuby, "Stat", rb_cObject);
   rb_define_alloc_func(Stat, zipruby_stat_alloc);
   rb_define_method(Stat, "initialize", zipruby_stat_initialize, -1);
   rb_define_method(Stat, "name", zipruby_stat_name, 0);
@@ -55,7 +55,7 @@ static VALUE zipruby_stat_initialize(int argc, VALUE *argv, VALUE self) {
   rb_scan_args(argc, argv, "21", &archive, &index, &flags);
 
   if (!rb_obj_is_instance_of(archive, Archive)) {
-    rb_raise(rb_eTypeError, "wrong argument type %s (expected Zip::Archive)", rb_class2name(CLASS_OF(archive)));
+    rb_raise(rb_eTypeError, "wrong argument type %s (expected ZipRuby::Archive)", rb_class2name(CLASS_OF(archive)));
   }
 
   switch (TYPE(index)) {

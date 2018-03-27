@@ -122,7 +122,7 @@ extern "C" {
 #define ZIP_ER_INVAL         18  /* N Invalid argument */
 #define ZIP_ER_NOZIP         19  /* N Not a zip archive */
 #define ZIP_ER_INTERNAL      20  /* N Internal error */
-#define ZIP_ER_INCONS        21  /* N Zip archive inconsistent */
+#define ZIP_ER_INCONS        21  /* N ZipRuby archive inconsistent */
 #define ZIP_ER_REMOVE        22  /* S Can't remove file */
 #define ZIP_ER_DELETED       23  /* N Entry has been deleted */
 #define ZIP_ER_ENCRNOTSUPP   24  /* N Encryption method not supported */

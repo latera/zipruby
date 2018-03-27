@@ -33,14 +33,14 @@ static VALUE zipruby_file_comp_method(VALUE self);
 static VALUE zipruby_file_encryption_method(VALUE self);
 static VALUE zipruby_file_is_directory(VALUE self);
 
-extern VALUE Zip;
+extern VALUE ZipRuby;
 extern VALUE Archive;
 VALUE File;
 extern VALUE Stat;
 extern VALUE Error;
 
 void Init_zipruby_file() {
-  File = rb_define_class_under(Zip, "File", rb_cObject);
+  File = rb_define_class_under(ZipRuby, "File", rb_cObject);
   rb_define_alloc_func(File, zipruby_file_alloc);
   rb_define_method(File, "initialize", zipruby_file_initialize, -1);
   rb_define_method(File, "close", zipruby_file_close, 0);
@@ -96,7 +96,7 @@ static VALUE zipruby_file_initialize(int argc, VALUE *argv, VALUE self) {
   rb_scan_args(argc, argv, "22", &archive,  &index, &flags, &stat_flags);
 
   if (!rb_obj_is_instance_of(archive, Archive)) {
-    rb_raise(rb_eTypeError, "wrong argument type %s (expected Zip::Archive)", rb_class2name(CLASS_OF(archive)));
+    rb_raise(rb_eTypeError, "wrong argument type %s (expected ZipRuby::Archive)", rb_class2name(CLASS_OF(archive)));
   }
 
   switch (TYPE(index)) {
